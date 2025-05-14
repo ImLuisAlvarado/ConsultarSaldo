@@ -5,8 +5,8 @@
 package mx.itson.cajero.ui;
 
 import javax.swing.JOptionPane;
-import mx.itson.cajero.entidades.Cliente;
 import mx.itson.cajero.entidades.CuentaBancaria;
+import mx.itson.cajero.persistencia.CuentaBancariaDAO;
 
 /**
  *
@@ -31,13 +31,28 @@ public class AccesoFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblPotroBank = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        lblNip = new javax.swing.JLabel();
-        pswNip = new javax.swing.JPasswordField();
+        pwfNip = new javax.swing.JPasswordField();
         btnVerificar = new javax.swing.JButton();
+        lblNip1 = new javax.swing.JLabel();
+        lblNip = new javax.swing.JLabel();
+        lblPotroBank = new javax.swing.JLabel();
+        txtNumCuenta = new javax.swing.JTextField();
+
+        jPanel3.setBackground(new java.awt.Color(51, 102, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 32, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 102, 255));
@@ -47,34 +62,20 @@ public class AccesoFrame extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
 
-        lblPotroBank.setFont(new java.awt.Font("L M Mono Caps10", 1, 24)); // NOI18N
-        lblPotroBank.setText("POTROBANK");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(lblPotroBank)
-                .addGap(44, 44, 44))
+            .addGap(0, 249, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblPotroBank)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addGap(0, 81, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(51, 102, 255));
-
-        lblNip.setFont(new java.awt.Font("LM Mono Caps 10", 1, 18)); // NOI18N
-        lblNip.setText("INGRESE SU NIP:");
-
-        pswNip.addActionListener(new java.awt.event.ActionListener() {
+        pwfNip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswNipActionPerformed(evt);
+                pwfNipActionPerformed(evt);
             }
         });
 
@@ -86,32 +87,14 @@ public class AccesoFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pswNip)
-                            .addComponent(lblNip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnVerificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNip)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pswNip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVerificar)
-                .addContainerGap())
-        );
+        lblNip1.setFont(new java.awt.Font("LM Mono Caps 10", 1, 14)); // NOI18N
+        lblNip1.setText("INGRESE SU NIP:");
+
+        lblNip.setFont(new java.awt.Font("LM Mono Caps 10", 1, 14)); // NOI18N
+        lblNip.setText("INGRESE SU NUMERO DE CUENTA:");
+
+        lblPotroBank.setFont(new java.awt.Font("L M Mono Caps10", 1, 24)); // NOI18N
+        lblPotroBank.setText("POTROBANK");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,65 +103,108 @@ public class AccesoFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(23, 23, 23)
+                        .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(lblNip1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(lblPotroBank))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblNip)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(pwfNip, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(btnVerificar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lblPotroBank)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblNip)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addComponent(txtNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNip1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pwfNip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVerificar)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pswNipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswNipActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pswNipActionPerformed
-
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        String numeroCuentaIngresado = txtNumCuenta.getText(); // ← ahora usamos JTextField
+        String nipIngresado = new String(pwfNip.getPassword());
 
-        CuentaBancaria cuenta = new CuentaBancaria("123456789", "Juan Pérez", 5000.0, "1234");
-        Cliente cliente = new Cliente("C001", "Juan", "Pérez", cuenta);
-        
-            char[] nipIngresado = pswNip.getPassword();
-            String nipString = new String(nipIngresado);
-            
-            if (nipString.equals(cuenta.getNip())) {
+        CuentaBancariaDAO cuentaService = new CuentaBancariaDAO();
+        CuentaBancaria cuenta = cuentaService.obtenerCuentaPorNumero(numeroCuentaIngresado);
+
+        if (cuenta != null) {
+            if (nipIngresado.equals(cuenta.getNip())) {
                 AccesoFrame.this.dispose();
-                
+
                 SaldoFrame saldoFrame = new SaldoFrame(cuenta);
                 saldoFrame.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(AccesoFrame.this, 
-                    "NIP incorrecto. Acceso denegado.", 
-                    "Error", 
+                JOptionPane.showMessageDialog(AccesoFrame.this,
+                    "NIP incorrecto. Acceso denegado.",
+                    "Error",
                     JOptionPane.ERROR_MESSAGE);
-                
-                // Limpiar el campo de NIP por seguridad
-                pswNip.setText("");
+                pwfNip.setText("");
             }
-        
+        } else {
+            JOptionPane.showMessageDialog(AccesoFrame.this,
+                "Número de cuenta no encontrado.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            txtNumCuenta.setText("");
+            pwfNip.setText("");
+        }
     }//GEN-LAST:event_btnVerificarActionPerformed
+
+    private void pwfNipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwfNipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwfNipActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +248,9 @@ public class AccesoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblNip;
+    private javax.swing.JLabel lblNip1;
     private javax.swing.JLabel lblPotroBank;
-    private javax.swing.JPasswordField pswNip;
+    private javax.swing.JPasswordField pwfNip;
+    private javax.swing.JTextField txtNumCuenta;
     // End of variables declaration//GEN-END:variables
 }

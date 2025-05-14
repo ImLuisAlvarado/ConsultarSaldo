@@ -4,13 +4,17 @@
  */
 package mx.itson.cajero.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-/**
- *
- * @author darkheaven
- */
+@Entity
 public class CuentaBancaria {
-    //entidades
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String numeroCuenta;
     private String titular;
     private double saldo;
@@ -22,8 +26,22 @@ public class CuentaBancaria {
         this.saldo = saldoInicial;
         this.nip = nip;
     }
+    
+    public CuentaBancaria() {
+    
+    }
+
 
     // Getters y Setters
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNumeroCuenta() {
         return numeroCuenta;
     }
